@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/container" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/menu"/>
+
+
+<!--    <Button-->
+<!--        android:id="@+id/account"-->
+<!--        android:layout_width="77dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:background="@drawable/button_border"-->
+<!--        app:backgroundTint="@null"-->
+<!--        app:cornerRadius="0dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        tools:ignore="SpeakableTextPresentCheck"-->
+<!--        android:onClick="goToActivityAccount"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/finance"-->
+<!--        android:layout_width="91dp"-->
+<!--        android:layout_height="47dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:background="@drawable/button_border"-->
+<!--        app:backgroundTint="@null"-->
+<!--        app:cornerRadius="0dp"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/add"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/account"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/account"-->
+<!--        tools:ignore="SpeakableTextPresentCheck"-->
+<!--        android:onClick="goToActivityFinance"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/add"-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="@drawable/button_border"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:padding="10dp"-->
+<!--        android:visibility="visible"-->
+<!--        app:backgroundTint="@null"-->
+<!--        app:cornerRadius="0dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/schedule"-->
+<!--        tools:ignore="SpeakableTextPresentCheck"-->
+<!--        android:onClick="goToActivityAdd"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/schedule"-->
+<!--        android:layout_width="76dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:layout_marginEnd="1dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:background="@drawable/button_border"-->
+<!--        app:backgroundTint="@null"-->
+<!--        app:cornerRadius="0dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/settings"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/settings"-->
+<!--        tools:ignore="SpeakableTextPresentCheck"-->
+<!--        android:onClick="goToActivitySchedule"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/settings"-->
+<!--        android:layout_width="85dp"-->
+<!--        android:layout_height="47dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:background="@drawable/button_border"-->
+<!--        app:backgroundTint="@null"-->
+<!--        app:cornerRadius="0dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        tools:ignore="SpeakableTextPresentCheck"-->
+<!--        android:onClick="goToActivitySettings"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="ACCOUNT"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/account"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/account"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/account" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="FINANCE"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/finance"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/add"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/account"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/finance" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView4"-->
+<!--        android:layout_width="26dp"-->
+<!--        android:layout_height="28dp"-->
+<!--        android:text="+"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="22sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/add"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/add"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/finance"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/add" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView5"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="SCHEDULE"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/schedule"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/schedule"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/add"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/schedule" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView6"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="SETTINGS"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/settings"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/settings"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/schedule"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/settings" />-->
+
+</RelativeLayout>
