@@ -56,6 +56,31 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void clickAccount(View view){
+
+
+        AccountFragment fragment= new AccountFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment, "account")
+                .addToBackStack(null)
+                .commit();
+
+
+    }
+
+    public void clickSettings(View view){
+
+
+        SettingsFragment fragment = new SettingsFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment, "settings")
+                .addToBackStack(null)
+                .commit();
+
+
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

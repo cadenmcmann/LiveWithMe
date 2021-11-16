@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFragment">
+    tools:context=".AccountFragment">
 
     <Button
         android:id="@+id/button9"
@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="15dp"
         android:text="Settings"
-        app:backgroundTint="@color/material_on_background_disabled"
+        android:onClick="clickSettings"
         app:layout_constraintBottom_toBottomOf="@+id/button10"
         app:layout_constraintEnd_toStartOf="@+id/button10"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +27,7 @@
         android:layout_marginEnd="16dp"
         android:text="Account Info"
         android:onClick="clickAccount"
+        app:backgroundTint="@color/material_on_background_disabled"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button9"
         app:layout_constraintTop_toTopOf="parent" />
