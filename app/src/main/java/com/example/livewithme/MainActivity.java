@@ -2,6 +2,7 @@ package com.example.livewithme;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
     //              // FinanceActivity, ScheduleActivity, Settings Activity
     //     // Layout.xml
     //              // activity_finance.xml, activity_schedule.xml, activity_settings.xml
+
+
+
+    // COMMIT 2: I changed all the activities into fragments. I left the original activities
+    // here just incase
+
+
     public void goToActivityHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -52,25 +60,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        bottomNavBar = findViewById(R.id.bottomnav);
+        bottomNavBar.setOnItemSelectedListener(bottomNavFunction);
+
     }
 
     public NavigationBarView.OnItemSelectedListener bottomNavFunction = new NavigationBarView.OnItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment = null;
             switch (item.getItemId()) {
                 case R.id.home:
-                    goToActivityHome();
+                    //goToActivityHome();
+                    fragment = new HomeFragment();
                     break;
                 case R.id.calendar:
-                    goToActivitySchedule();
+                    fragment = new ScheduleFragment();
+                    //goToActivitySchedule();
                     break;
                 case R.id.finance:
-                    goToActivityFinance();
+                    fragment = new FinanceFragment();
+                    //goToActivityFinance();
                     break;
                 case R.id.settings:
-                    goToActivitySettings();
+                    fragment = new SettingsFragment();
+                    //goToActivitySettings();
                     break;
             }
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
             return true;
         }
     };

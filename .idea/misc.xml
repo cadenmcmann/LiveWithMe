@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/activity_finance.xml" value="0.18115942028985507" />
+        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/activity_main.xml" value="0.18115942028985507" />
+        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/activity_settings.xml" value="0.18115942028985507" />
+        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/fragment_finance.xml" value="0.17481884057971014" />
+        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/fragment_settings.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/drawable/button_border.xml" value="0.284375" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.13677811550151975" />
         <entry key="app/src/main/res/layout/activity_add.xml" value="0.13677811550151975" />
