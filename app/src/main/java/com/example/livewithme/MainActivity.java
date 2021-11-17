@@ -2,12 +2,16 @@ package com.example.livewithme;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Switch;
 
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -80,6 +84,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void darkMode(View view) {
+
+        Switch s =  findViewById(R.id.switch2);
+
+        if (s.isChecked()) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavBar = findViewById(R.id.bottomnav);
         bottomNavBar.setOnItemSelectedListener(bottomNavFunction);
+
+
 
     }
 
