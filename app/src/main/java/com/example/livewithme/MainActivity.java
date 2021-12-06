@@ -18,6 +18,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainActivity extends AppCompatActivity {
 
     public NavigationBarView bottomNavBar;
+    public SharedPreferences preferences;
 
 
     // The navbar we are using navigates between fragments, not activites. Currently
@@ -88,11 +89,17 @@ public class MainActivity extends AppCompatActivity {
 
         Switch s =  findViewById(R.id.switch2);
 
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("scheck", false);
+
         if (s.isChecked()) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+            editor.putBoolean("scheck", s.isChecked());
+            editor.commit();
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            editor.putBoolean("scheck", s.isChecked());
+            editor.commit();
         }
 
 
@@ -106,6 +113,14 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavBar = findViewById(R.id.bottomnav);
         bottomNavBar.setOnItemSelectedListener(bottomNavFunction);
+        preferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+
+        boolean isNightMode = preferences.getBoolean("scheck", false);
+        if (isNightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
 
 
