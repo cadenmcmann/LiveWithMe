@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,17 +16,25 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ListView;
 
+import android.content.Intent;
+
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import static com.example.livewithme.CalendarUtils.daysInWeekArray;
+//import static com.example.livewithme.CalendarUtils.monthYearFromDate;
 
 public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItemListener{
 
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
+    private ListView eventListView;
 
 
     public ScheduleFragment() {
@@ -37,10 +46,6 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setCreateView(R.layout.fragment_schedule);
-//        initWidgets();
-//        selectedDate = LocalDate.now();
-//        setMonthView();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -51,9 +56,7 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
         View v = inflater.inflate(R.layout.fragment_schedule, container,false);
         initWidgets(v);
         selectedDate = LocalDate.now();
-        setMonthView();
-
-        //View view = inflater.inflate(R.layout.fragment_schedule, container, false);
+        setWeekView();
 
         Button next = (Button) v.findViewById(R.id.forward);
         next.setOnClickListener(new OnClickListener()
@@ -61,8 +64,8 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
             @Override
             public void onClick(View v)
             {
-                selectedDate = selectedDate.plusMonths(1);
-                setMonthView();
+                selectedDate = selectedDate.plusWeeks(1);
+                setWeekView();
             }
         });
 
@@ -72,8 +75,18 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
             @Override
             public void onClick(View v)
             {
-                selectedDate = selectedDate.minusMonths(1);
-                setMonthView();
+                selectedDate = selectedDate.minusWeeks(1);
+                setWeekView();
+            }
+        });
+
+        Button addEvent = (Button) v.findViewById(R.id.addEvent);
+        addEvent.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), EventEditActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -81,48 +94,53 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
     }
 
     private void initWidgets(View view){
-
-       // if (calendarRecyclerView != null) {
-             calendarRecyclerView = view.findViewById(R.id.calendarRecyclerView);
-       //
-            monthYearText = view.findViewById(R.id.monthYearTV);
+        calendarRecyclerView = view.findViewById(R.id.calendarRecyclerView);
+        monthYearText = view.findViewById(R.id.monthYearTV);
+        eventListView = view.findViewById(R.id.eventListView);
 
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void setMonthView(){
+    private void setWeekView(){
         monthYearText.setText(monthYearFromDate(selectedDate));
-        ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
+        ArrayList<LocalDate> days = daysInWeekArray(selectedDate);
 
-        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
+        CalendarAdapter calendarAdapter = new CalendarAdapter(days, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
+        setEventAdapter();
     }
 
+//    @RequiresApi(api = Build.VERSION_CODES.O)
+//    private ArrayList<LocalDate> daysInWeekArray(LocalDate date)
+//    {
+//        ArrayList<LocalDate> days = new ArrayList<>();
+//        LocalDate current = sundayForDate(selectedDate);
+//        LocalDate endDate = current.plusWeeks(1);
+//
+//        while (current.isBefore(endDate))
+//        {
+//            days.add(current);
+//            current = current.plusDays(1);
+//        }
+//        return days;
+//    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private ArrayList<String> daysInMonthArray(LocalDate date)
+    private static LocalDate sundayForDate(LocalDate current)
     {
-        ArrayList<String> daysInMonthArray = new ArrayList<>();
-        YearMonth yearMonth = YearMonth.from(date);
+        LocalDate oneWeekAgo = current.minusWeeks(1);
 
-        int daysInMonth = yearMonth.lengthOfMonth();
-
-        LocalDate firstOfMonth = selectedDate.withDayOfMonth(1);
-        int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
-
-        for(int i = 1; i <= 42; i++)
+        while (current.isAfter(oneWeekAgo))
         {
-            if(i <= dayOfWeek || i > daysInMonth + dayOfWeek)
-            {
-                daysInMonthArray.add("");
-            }
-            else
-            {
-                daysInMonthArray.add(String.valueOf(i - dayOfWeek));
-            }
+            if(current.getDayOfWeek() == DayOfWeek.SUNDAY)
+                return current;
+
+            current = current.minusDays(1);
         }
-        return  daysInMonthArray;
+
+        return null;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -135,25 +153,36 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void previousMonthAction(View view)
     {
-        selectedDate = selectedDate.minusMonths(1);
-        setMonthView();
+        selectedDate = selectedDate.minusWeeks(1);
+        setWeekView();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void nextMonthAction(View view)
     {
-        selectedDate = selectedDate.plusMonths(1);
-        setMonthView();
+        selectedDate = selectedDate.plusWeeks(1);
+        setWeekView();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onItemClick(int position, String dayText)
+    public void onItemClick(int position, LocalDate date)
     {
-        if(!dayText.equals(""))
-        {
-            String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
-            Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
-        }
+        CalendarUtils.selectedDate = date;
+        setWeekView();
     }
+
+    private void setEventAdapter()
+    {
+        ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
+        EventAdapter eventAdapter = new EventAdapter(getActivity().getApplicationContext(), dailyEvents);
+        eventListView.setAdapter(eventAdapter);
+    }
+
+    //!!!! cannot use intent in fragment....
+//    public void newEventAction(View view)
+//    {
+//        startActivity(new Intent(this,
+//                EventEditActivity.class));
+//    }
 }
