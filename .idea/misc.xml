@@ -13,6 +13,12 @@
         <entry key="app/src/main/res/layout/activity_add.xml" value="0.13677811550151975" />
         <entry key="app/src/main/res/layout/activity_finance.xml" value="0.14361702127659576" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/expense_dialog.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/fragment_dialogfragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_finance.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.2074074074074074" />
       </map>
     </option>

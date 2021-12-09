@@ -4,16 +4,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
     public NavigationBarView bottomNavBar;
+    final Context context = this;
 
 
     // The navbar we are using navigates between fragments, not activites. Currently
@@ -38,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public void goToActivityHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+
     }
 
     public void goToActivityFinance(){
@@ -63,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavBar = findViewById(R.id.bottomnav);
         bottomNavBar.setOnItemSelectedListener(bottomNavFunction);
+
 
     }
 
