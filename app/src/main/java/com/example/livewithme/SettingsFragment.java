@@ -45,5 +45,12 @@ public class SettingsFragment extends Fragment {
             Switch swit = (Switch) getView().findViewById(R.id.switch2);
             swit.setChecked(true);
         }
+
+        boolean notes = preferences.getBoolean("notecheck", false);
+        if (notes) {
+            Switch swit = (Switch) getView().findViewById(R.id.switch3);
+            swit.setChecked(true);
+        }
+
     }
 }

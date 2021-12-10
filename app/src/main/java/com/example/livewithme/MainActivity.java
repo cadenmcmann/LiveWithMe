@@ -105,6 +105,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void setNotif(View view) {
+        Switch s =  findViewById(R.id.switch3);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("notecheck", false);
+
+        if (s.isChecked()) {
+
+
+            // EDIT THE NOTIFICATIONS HERE
+
+
+
+            editor.putBoolean("notecheck", s.isChecked());
+            editor.commit();
+        } else {
+
+            // EDIT THE NOTIFICATIONS HERE
+
+            editor.putBoolean("notecheck", s.isChecked());
+            editor.commit();
+        }
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
