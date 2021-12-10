@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,19 +14,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ListView;
 
 import android.content.Intent;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static com.example.livewithme.CalendarUtils.daysInWeekArray;
-//import static com.example.livewithme.CalendarUtils.monthYearFromDate;
+import static com.example.livewithme.CalendarUtils.monthYearFromDate;
 
 public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItemListener{
 
@@ -112,21 +109,6 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
         setEventAdapter();
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.O)
-//    private ArrayList<LocalDate> daysInWeekArray(LocalDate date)
-//    {
-//        ArrayList<LocalDate> days = new ArrayList<>();
-//        LocalDate current = sundayForDate(selectedDate);
-//        LocalDate endDate = current.plusWeeks(1);
-//
-//        while (current.isBefore(endDate))
-//        {
-//            days.add(current);
-//            current = current.plusDays(1);
-//        }
-//        return days;
-//    }
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     private static LocalDate sundayForDate(LocalDate current)
     {
@@ -144,27 +126,6 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private String monthYearFromDate(LocalDate date)
-    {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
-        return date.format(formatter);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void previousMonthAction(View view)
-    {
-        selectedDate = selectedDate.minusWeeks(1);
-        setWeekView();
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void nextMonthAction(View view)
-    {
-        selectedDate = selectedDate.plusWeeks(1);
-        setWeekView();
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onItemClick(int position, LocalDate date)
     {
@@ -179,10 +140,4 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
         eventListView.setAdapter(eventAdapter);
     }
 
-    //!!!! cannot use intent in fragment....
-//    public void newEventAction(View view)
-//    {
-//        startActivity(new Intent(this,
-//                EventEditActivity.class));
-//    }
 }
