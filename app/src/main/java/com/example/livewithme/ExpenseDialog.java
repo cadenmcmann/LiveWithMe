@@ -33,6 +33,11 @@ public class ExpenseDialog extends AppCompatDialogFragment {
                         FirebaseDatabase db = FirebaseDatabase.getInstance();
                         DatabaseReference myRef = db.getReference();
 
+
+
+
+
+
                     }
                 })
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
