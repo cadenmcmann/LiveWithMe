@@ -2,18 +2,23 @@ package com.example.livewithme;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Switch;
 
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
     public NavigationBarView bottomNavBar;
+    public SharedPreferences preferences;
 
 
     // The navbar we are using navigates between fragments, not activites. Currently
@@ -56,6 +61,75 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void clickAccount(View view){
+
+
+        AccountFragment fragment= new AccountFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment, "account")
+                .addToBackStack(null)
+                .commit();
+
+
+    }
+
+    public void clickSettings(View view){
+
+
+        SettingsFragment fragment = new SettingsFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment, "settings")
+                .addToBackStack(null)
+                .commit();
+
+
+    }
+
+    public void darkMode(View view) {
+
+        Switch s =  findViewById(R.id.switch2);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("scheck", false);
+
+        if (s.isChecked()) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            editor.putBoolean("scheck", s.isChecked());
+            editor.commit();
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            editor.putBoolean("scheck", s.isChecked());
+            editor.commit();
+        }
+
+
+    }
+
+    public void setNotif(View view) {
+        Switch s =  findViewById(R.id.switch3);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("notecheck", false);
+
+        if (s.isChecked()) {
+
+
+            // EDIT THE NOTIFICATIONS HERE
+
+
+
+            editor.putBoolean("notecheck", s.isChecked());
+            editor.commit();
+        } else {
+
+            // EDIT THE NOTIFICATIONS HERE
+
+            editor.putBoolean("notecheck", s.isChecked());
+            editor.commit();
+        }
+
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +137,16 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavBar = findViewById(R.id.bottomnav);
         bottomNavBar.setOnItemSelectedListener(bottomNavFunction);
+        preferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+
+        boolean isNightMode = preferences.getBoolean("scheck", false);
+        if (isNightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+
 
     }
 
