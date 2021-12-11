@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/expenseNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        />
+
+    <EditText
+        android:id="@+id/expenseNameInput"
+        android:hint="name"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp">
+    </EditText>
+
+    <TextView
+        android:id="@+id/expenseDateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        />
+
+    <EditText
+        android:id="@+id/expenseDateInput"
+        android:hint="date"
+        android:inputType="date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp">
+    </EditText>
+
+    <TextView
+        android:id="@+id/expenseCostLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cost"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        />
+
+    <EditText
+        android:id="@+id/expenseCostInput"
+        android:hint="cost"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp">
+    </EditText>
+
+</LinearLayout>
