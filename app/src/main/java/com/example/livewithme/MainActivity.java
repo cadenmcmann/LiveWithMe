@@ -11,7 +11,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -129,11 +132,56 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void logOut(View view) {
+        SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        sharedPreferences.edit().putString("username", "").apply();
+        Intent intent = new Intent(this, LoginAct.class);
+        startActivity(intent);
+    }
+
+    public void applyUser(View view){
+
+        EditText myTextField = (EditText) findViewById(R.id.editTextTextPersonName);
+        String user = myTextField.getText().toString();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        sharedPreferences.edit().putString("username", user).apply();
+
+    }
+
+    public void showPass(View view){
+
+        TextView text4 = (TextView) findViewById(R.id.textView10);
+        preferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        String pass = preferences.getString("password", "");
+        text4.setText(pass);
+
+    }
+
+
+    public void applyPass(View view){
+
+        EditText myTextField = (EditText) findViewById(R.id.editTextTextPersonName3);
+        String pass = myTextField.getText().toString();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        sharedPreferences.edit().putString("password", pass).apply();
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        if (sharedPreferences.getString("username", "").equals("")) {
+
+            Intent intent = new Intent(this, LoginAct.class);
+            startActivity(intent);
+        }
+
 
         bottomNavBar = findViewById(R.id.bottomnav);
         bottomNavBar.setOnItemSelectedListener(bottomNavFunction);
