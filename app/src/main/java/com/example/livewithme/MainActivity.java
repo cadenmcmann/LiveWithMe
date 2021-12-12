@@ -129,11 +129,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void logOut(View view) {
+        SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        sharedPreferences.edit().putString("username", "").apply();
+        Intent intent = new Intent(this, LoginAct.class);
+        startActivity(intent);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        if (sharedPreferences.getString("username", "").equals("")) {
+
+            Intent intent = new Intent(this, LoginAct.class);
+            startActivity(intent);
+        }
+
 
         bottomNavBar = findViewById(R.id.bottomnav);
         bottomNavBar.setOnItemSelectedListener(bottomNavFunction);
