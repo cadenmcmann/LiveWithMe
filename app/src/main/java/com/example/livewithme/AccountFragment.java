@@ -42,6 +42,17 @@ public class AccountFragment extends Fragment {
         String user = preferences.getString("username", "");
         text3.setText(user);
 
+        TextView text4 = (TextView) getView().findViewById(R.id.textView10);
+        //preferences = getActivity().getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        String pass = preferences.getString("password", "");
+        String hiddenPass = "";
+
+        for(int i = 0; i < pass.length(); i++) {
+            hiddenPass = hiddenPass + "*";
+        }
+
+        text4.setText(hiddenPass);
+
         if(Event.eventsList.size() > 0) {
             TextView text = (TextView) getView().findViewById(R.id.textView8);
             TextView text2 = (TextView) getView().findViewById(R.id.textView9);

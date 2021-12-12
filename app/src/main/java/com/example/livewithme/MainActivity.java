@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -144,6 +145,26 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
         sharedPreferences.edit().putString("username", user).apply();
+
+    }
+
+    public void showPass(View view){
+
+        TextView text4 = (TextView) findViewById(R.id.textView10);
+        preferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        String pass = preferences.getString("password", "");
+        text4.setText(pass);
+
+    }
+
+
+    public void applyPass(View view){
+
+        EditText myTextField = (EditText) findViewById(R.id.editTextTextPersonName3);
+        String pass = myTextField.getText().toString();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        sharedPreferences.edit().putString("password", pass).apply();
 
     }
 
