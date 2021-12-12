@@ -35,7 +35,11 @@ public class AccountFragment extends Fragment {
 
         if(Event.eventsList.size() > 0) {
             TextView text = (TextView) getView().findViewById(R.id.textView8);
+            TextView text2 = (TextView) getView().findViewById(R.id.textView9);
+
             text.setText(Event.eventsList.get(Event.eventsList.size() - 1).getName());
+            String s = String.format("%d",Event.eventsList.size());
+            text2.setText(s);
         }
 
     }
