@@ -135,13 +135,14 @@
         app:layout_constraintStart_toEndOf="@+id/textView7" />
 
     <Button
-        android:id="@+id/button7"
-        android:layout_width="91dp"
-        android:layout_height="47dp"
+        android:id="@+id/button77"
+        android:layout_width="64dp"
+        android:layout_height="38dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="376dp"
-        android:text="Show"
+        android:layout_marginBottom="372dp"
         android:onClick="showPass"
+        android:text="Show"
+        android:textSize="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
