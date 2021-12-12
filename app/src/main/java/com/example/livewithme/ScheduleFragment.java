@@ -32,6 +32,7 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
     private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
     private ListView eventListView;
+    private boolean isDate = false;
 
 
     public ScheduleFragment() {
@@ -82,8 +83,10 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
         {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), EventEditActivity.class);
-                startActivity(intent);
+                if(isDate) {
+                    Intent intent = new Intent(getActivity(), EventEditActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -129,6 +132,7 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
     @Override
     public void onItemClick(int position, LocalDate date)
     {
+        isDate = true;
         CalendarUtils.selectedDate = date;
         setWeekView();
     }
