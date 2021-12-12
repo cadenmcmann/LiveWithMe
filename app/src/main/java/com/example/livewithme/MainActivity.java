@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Switch;
 
 import com.google.android.material.navigation.NavigationBarView;
@@ -134,6 +135,16 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences.edit().putString("username", "").apply();
         Intent intent = new Intent(this, LoginAct.class);
         startActivity(intent);
+    }
+
+    public void applyUser(View view){
+
+        EditText myTextField = (EditText) findViewById(R.id.editTextTextPersonName);
+        String user = myTextField.getText().toString();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        sharedPreferences.edit().putString("username", user).apply();
+
     }
 
 
