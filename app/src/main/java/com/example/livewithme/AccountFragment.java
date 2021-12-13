@@ -44,13 +44,30 @@ public class AccountFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_account, container, false);
     }
 
-    private void getdata() {
+    public void getCount(String group){
 
-        // calling add value event listener method
-        // for getting the values from database.
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference myReff = db.getReference();
-        myReff.child("Users").addValueEventListener(new ValueEventListener() {
+
+
+        Task<DataSnapshot> data = myReff.child("Groups").child(group).child("Expenses").get();
+        while ((!data.isComplete()));
+        DataSnapshot data2 = data.getResult();
+        Long numChild = data2.getChildrenCount();
+        int num = numChild.intValue();
+        String gg = Integer.toString(num);
+
+        TextView test = (TextView) getView().findViewById(R.id.textView11);
+        test.setText(gg);
+
+    }
+
+    public void getGroup(String name){
+
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference myReff = db.getReference();
+        myReff.child("Users").child(name).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // this method is call to get the realtime
@@ -61,24 +78,9 @@ public class AccountFragment extends Fragment {
                 // snapshot of our database.
 
                 Map<Object, String> map = (Map<Object, String>) snapshot.getValue();
-                String jj = (String) map.get("Cassius");
-                System.out.println("jj");
-                System.out.println(jj);
-                System.out.println("jj");
+                String jj = (String) map.get("Group");
+                getCount(jj);
 
-
-                // after getting the value we are setting
-                // our value to our text view in below line.
-
-                ////TextView test = (TextView) getView().findViewById(R.id.textView11);
-
-
-                //Object object = data2.getValue(Object.class);
-                //String see = (String) object;
-
-                ////test.setText("jj");
-
-                //retrieveTV.setText(value);
             }
 
             @Override
@@ -119,48 +121,8 @@ public class AccountFragment extends Fragment {
             text2.setText(s);
         }
 
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = db.getReference();
-        //String s = myRef.child("users").child("caden").child("nickname").get().getResult().getValue(String.class);
-        Task<DataSnapshot> data = myRef.child("users").child("username").get();
-        while ((!data.isComplete()));
-        DataSnapshot data2 = data.getResult();
-        //Object ss = data2.getValue();
+        getGroup(user);
 
-        //data2.getValue()
-        //String s = (String) data2.getValue(String.class);
-        TextView test = (TextView) getView().findViewById(R.id.textView11);
-        getdata();
-
-
-        //Object object = data2.getValue(Object.class);
-        //String see = (String) object;
-        //test.setText(ss.toString());
-
-
-
-
-
-
-
-        // Attach a listener to read the data at our posts reference
-
-        /*
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String post = dataSnapshot.getValue(String.class);
-                //System.out.println(post);
-                test.setText(post);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-
-         */
 
 
     }
