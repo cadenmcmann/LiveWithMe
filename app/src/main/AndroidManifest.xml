@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveWithMe">
         <activity
+            android:name=".LoginAct"
+            android:exported="true" />
+        <activity
             android:name=".EventEditActivity"
             android:exported="true" />
         <activity
