@@ -3,16 +3,22 @@ package com.example.livewithme;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 import java.time.LocalTime;
 
 public class EventEditActivity extends AppCompatActivity
 {
+
+
     private EditText eventNameET;
     private TextView eventDateTV, eventTimeTV;
 
@@ -26,6 +32,7 @@ public class EventEditActivity extends AppCompatActivity
         setContentView(R.layout.activity_event_edit);
         initWidgets();
         time = LocalTime.now();
+        // bring down from shared preferences
         eventDateTV.setText("Date: " + CalendarUtils.formattedDate(CalendarUtils.selectedDate));
         eventTimeTV.setText("Time: " + CalendarUtils.formattedTime(time));
     }
