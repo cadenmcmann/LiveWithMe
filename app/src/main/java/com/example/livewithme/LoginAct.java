@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class LoginAct extends AppCompatActivity {
 
     @Override
@@ -28,6 +31,12 @@ public class LoginAct extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
         sharedPreferences.edit().putString("username", user).apply();
         sharedPreferences.edit().putString("password", pass).apply();
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = db.getReference();
+        myRef.child("Users").child(user).child("Password").setValue(pass);
+        myRef.child("Users").child(user).child("Name").setValue(user);
+        myRef.child("Users").child(user).child("Group").setValue("[List of groups]");
 
         finish();
     }
