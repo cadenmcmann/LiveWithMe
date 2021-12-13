@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,9 +22,11 @@ public class ExpenseDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         final View expenseDialogLayout = getLayoutInflater().inflate(R.layout.expense_dialog, null);
-        View expenseNameInput = expenseDialogLayout.findViewById(R.id.expenseNameInput);
-        View expenseCostInput = expenseDialogLayout.findViewById(R.id.expenseCostInput);
-        View expenseDateInput = expenseDialogLayout.findViewById(R.id.expenseDateInput);
+        final View financeFragmentView = getLayoutInflater().inflate(R.layout.fragment_finance, null);
+
+        EditText expenseNameInput = (EditText) expenseDialogLayout.findViewById(R.id.expenseNameInput);
+        EditText expenseCostInput = (EditText) expenseDialogLayout.findViewById(R.id.expenseCostInput);
+        EditText expenseDateInput = (EditText) expenseDialogLayout.findViewById(R.id.expenseDateInput);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder
                 .setTitle("New Expense")
@@ -33,9 +37,7 @@ public class ExpenseDialog extends AppCompatDialogFragment {
                         FirebaseDatabase db = FirebaseDatabase.getInstance();
                         DatabaseReference myRef = db.getReference();
 
-
-
-
+                        TextView textView = new TextView(getActivity());
 
 
                     }
