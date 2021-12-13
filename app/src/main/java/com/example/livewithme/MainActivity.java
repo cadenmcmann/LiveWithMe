@@ -17,6 +17,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -147,6 +149,16 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
         sharedPreferences.edit().putString("username", user).apply();
 
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = db.getReference();
+        preferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        String pass = preferences.getString("password", "");
+        //myRef.child("Users").child(user).setValue(pass);
+
+        myRef.child("Users").child(user).child("Password").setValue(pass);
+        myRef.child("Users").child(user).child("Name").setValue(user);
+        myRef.child("Users").child(user).child("Group").setValue("[List of groups]");
+
     }
 
     public void showPass(View view){
@@ -166,6 +178,16 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
         sharedPreferences.edit().putString("password", pass).apply();
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = db.getReference();
+        preferences = getSharedPreferences("com.example.livewithme", Context.MODE_PRIVATE);
+        String user = preferences.getString("username", "");
+        //myRef.child("Users").child(user).setValue(pass);
+
+        myRef.child("Users").child(user).child("Password").setValue(pass);
+        myRef.child("Users").child(user).child("Name").setValue(user);
+        myRef.child("Users").child(user).child("Group").setValue("[List of groups]");
 
     }
 
