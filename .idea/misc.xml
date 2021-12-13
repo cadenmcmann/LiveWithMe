@@ -6,28 +6,21 @@
         <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/activity_finance.xml" value="0.18115942028985507" />
         <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/activity_main.xml" value="0.18115942028985507" />
         <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/activity_settings.xml" value="0.18115942028985507" />
-        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/fragment_account.xml" value="0.2" />
         <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/fragment_finance.xml" value="0.17481884057971014" />
-        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/fragment_schedule.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMe/app/src/main/res/layout/fragment_settings.xml" value="0.18115942028985507" />
-        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMeNEW/app/src/main/res/layout/activity_login.xml" value="0.15729166666666666" />
-        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMeNEW/app/src/main/res/layout/activity_settings.xml" value="0.17255434782608695" />
-        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMeNEW/app/src/main/res/layout/fragment_account.xml" value="0.268" />
-        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMeNEW/app/src/main/res/layout/fragment_finance.xml" value="0.17346014492753623" />
-        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMeNEW/app/src/main/res/layout/fragment_schedule.xml" value="0.15729166666666666" />
-        <entry key="..\:/Users/cassi/AndroidStudioProjects/LiveWithMeNEW/app/src/main/res/layout/fragment_settings.xml" value="0.1793478260869565" />
         <entry key="app/src/main/res/drawable/button_border.xml" value="0.284375" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.13677811550151975" />
         <entry key="app/src/main/res/layout/activity_add.xml" value="0.13677811550151975" />
-        <entry key="app/src/main/res/layout/activity_event_edit.xml" value="0.1515625" />
+        <entry key="app/src/main/res/layout/activity_add_button.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_event_edit.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/activity_finance.xml" value="0.14361702127659576" />
+        <entry key="app/src/main/res/layout/activity_join_button.xml" value="0.20520833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_week_view.xml" value="0.1140625" />
-        <entry key="app/src/main/res/layout/calendar_cell.xml" value="0.15104166666666666" />
-        <entry key="app/src/main/res/layout/event_cell.xml" value="0.23076923076923078" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.234375" />
-        <entry key="app/src/main/res/layout/fragment_schedule.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_add__button_.xml" value="0.25271739130434784" />
+        <entry key="app/src/main/res/layout/fragment_finance.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/layout/fragment_group.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_schedule.xml" value="0.25815217391304346" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.2074074074074074" />
       </map>
     </option>
