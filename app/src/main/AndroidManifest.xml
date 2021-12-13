@@ -12,7 +12,9 @@
         android:theme="@style/Theme.LiveWithMe">
         <activity
             android:name=".LoginAct"
-            android:exported="true" />
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".EventEditActivity"
             android:exported="true" />

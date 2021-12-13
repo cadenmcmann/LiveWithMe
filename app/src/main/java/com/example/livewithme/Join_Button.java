@@ -23,7 +23,7 @@ public class Join_Button extends AppCompatDialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final EditText joinButtonLayout = (EditText) getLayoutInflater().inflate(R.layout.activity_join_button, null);
+        final View joinButtonLayout = getLayoutInflater().inflate(R.layout.activity_join_button, null);
         EditText joinGroupInput = joinButtonLayout.findViewById(R.id.joinGroup);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

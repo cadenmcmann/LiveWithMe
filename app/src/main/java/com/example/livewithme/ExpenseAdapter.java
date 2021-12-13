@@ -19,8 +19,8 @@ public class ExpenseAdapter extends FirebaseRecyclerAdapter<Expense, ExpenseAdap
     @Override
     protected void onBindViewHolder(@NonNull ExpenseHolder holder, int position, @NonNull Expense model) {
         holder.viewName.setText(model.getName());
-        holder.viewDate.setText(model.getDate().toString());
-        holder.viewCost.setText(String.valueOf(model.getCost()));
+        holder.viewDate.setText(model.getDate());
+        holder.viewCost.setText("$" + String.valueOf(model.getCost()));
 
 
     }
