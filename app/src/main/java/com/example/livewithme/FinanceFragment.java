@@ -1,6 +1,7 @@
 package com.example.livewithme;
 
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -28,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class FinanceFragment extends Fragment {
+
     private FloatingActionButton showDialogButton;
     private DatabaseReference db;
     private RecyclerView recyclerView;
