@@ -6,39 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ScheduleFragment"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardElevation="10dp"
-        app:cardCornerRadius="20dp"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardMaxElevation="12dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
-        >
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/HomeLayout">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/Roommates"
             android:gravity="center_horizontal"
-            android:text="Roommates"
-            android:layout_marginTop="20dp"
+            android:text="Live With Me"
+            android:layout_marginTop="130dp"
             android:layout_marginBottom="20dp"
-            android:textColor="@color/black"
-            android:textSize="26dp"
-             />
-
-        <TextView
-            android:id="@+id/Roommates_group"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:textColor="@color/common_google_signin_btn_text_dark_disabled"
+            android:textSize="66dp"
+            android:fontFamily="serif"
+            android:shadowColor="@color/purple_700"
+            android:textStyle="bold|italic"/>
 
 
-    </androidx.cardview.widget.CardView>
+
+<!--    </androidx.cardview.widget.CardView>-->
 
     <Button
         android:id="@+id/ADD"

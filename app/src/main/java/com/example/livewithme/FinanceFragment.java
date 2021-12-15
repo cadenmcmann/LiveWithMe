@@ -71,11 +71,13 @@ public class FinanceFragment extends Fragment {
         ValueEventListener userGroupListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String groupName = snapshot.getValue().toString();
-                sharedPreferences.edit().putString("userGroupName", groupName).apply();
+
+                if(snapshot.getValue() != null) {
+                    String groupName = snapshot.getValue().toString();
+                    sharedPreferences.edit().putString("userGroupName", groupName).apply();
+                }
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.i("err", error.toException().toString());
@@ -84,9 +86,8 @@ public class FinanceFragment extends Fragment {
         userGroupRef.addValueEventListener(userGroupListener);
 
         String groupName = sharedPreferences.getString("userGroupName", "");
-
-
-
+        Log.i("Group", groupName);
+        Log.i("Username", username);
 
         DatabaseReference expensesReference = db.child("Groups").child(groupName).child("Expenses");
         recyclerView = financeFragmentView.findViewById(R.id.recycler_view);
