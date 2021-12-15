@@ -36,7 +36,7 @@ public class LoginAct extends AppCompatActivity {
         DatabaseReference myRef = db.getReference();
         myRef.child("Users").child(user).child("Password").setValue(pass);
         myRef.child("Users").child(user).child("Name").setValue(user);
-        myRef.child("Users").child(user).child("Group").setValue("List of groups");
+        myRef.child("Users").child(user).child("Group").setValue("NoGroupYet");
 
         finish();
     }
