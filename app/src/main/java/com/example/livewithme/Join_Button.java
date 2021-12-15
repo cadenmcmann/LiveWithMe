@@ -36,6 +36,7 @@ public class Join_Button extends AppCompatDialogFragment {
         EditText joinGroupInput = joinButtonLayout.findViewById(R.id.joinGroup);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder noGroup = new AlertDialog.Builder(getActivity());
 
         builder
                 .setTitle("Join Group")
@@ -53,7 +54,9 @@ public class Join_Button extends AppCompatDialogFragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if (!snapshot.exists()) {
                                     // alert to user that it does not exist
-                                    Log.i("Pray for this one", "Yep, it works");
+                                    noGroup.setMessage("This is not a group!");
+                                    noGroup.create();
+                                    noGroup.show();
                                 }
                                 else {
                                     // do work to make user join group
