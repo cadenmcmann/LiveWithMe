@@ -44,4 +44,5 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-database:6.2.1'
 //    implementation "com.google.firebase-ui-firestore:4.1.0"
     implementation "com.google.firebase:firebase-database"
+    //
 }
