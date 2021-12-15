@@ -1,5 +1,7 @@
 package com.example.livewithme;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -12,9 +14,11 @@ import android.view.View.OnClickListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ListView;
+import android.widget.EditText;
 
 import android.content.Intent;
 
@@ -35,6 +39,7 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
     private boolean isDate = false;
 
 
+
     public ScheduleFragment() {
         // Required empty public constructor
     }
@@ -53,6 +58,9 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_schedule, container,false);
         initWidgets(v);
+        loadFromDBToMemory();
+        setOnClickListener();
+        //setEventAdapter();
         selectedDate = LocalDate.now();
         setWeekView();
 
@@ -89,7 +97,6 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
                 }
             }
         });
-
         return v;
     }
 
@@ -97,7 +104,27 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
         calendarRecyclerView = view.findViewById(R.id.calendarRecyclerView);
         monthYearText = view.findViewById(R.id.monthYearTV);
         eventListView = view.findViewById(R.id.eventListView);
+    }
 
+    private void loadFromDBToMemory()
+    {
+        SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
+        sqLiteManager.populateNoteListArray();
+    }
+
+    private void setOnClickListener()
+    {
+        eventListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
+            {
+                Event selectedNote = (Event) eventListView.getItemAtPosition(position);
+                Intent editNoteIntent = new Intent(getActivity().getApplicationContext(), EventEditActivity.class);
+                editNoteIntent.putExtra(Event.NOTE_EDIT_EXTRA, selectedNote.getId());
+                startActivity(editNoteIntent);
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -139,9 +166,24 @@ public class ScheduleFragment extends Fragment implements CalendarAdapter.OnItem
 
     private void setEventAdapter()
     {
-        ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
+        ArrayList<Event> dailyEvents = Event.nonDeletedNotes();
+        //ArrayList<Event> dailyEvents2 = Event.eventsForDate(CalendarUtils.selectedDate);
+        //ArrayList<Event> dailyEvents3 = Event.combinedNotes(dailyEvents, dailyEvents2);
         EventAdapter eventAdapter = new EventAdapter(getActivity().getApplicationContext(), dailyEvents);
         eventListView.setAdapter(eventAdapter);
+    }
+
+    public void newNote(View view)
+    {
+        Intent newNoteIntent = new Intent(getActivity(), EventEditActivity.class);
+        startActivity(newNoteIntent);
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        setEventAdapter();
     }
 
 }

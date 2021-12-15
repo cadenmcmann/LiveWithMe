@@ -127,7 +127,16 @@
         android:text="Add Event"
         android:background="@null"
         android:textStyle="bold"
-        android:textSize="18sp" />
+        android:textSize="15sp" />
+<!--    <Button-->
+<!--        android:id="@+id/deleteButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:text="Delete Event"-->
+<!--        android:background="@null"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textSize="15sp" />-->
 
     <ListView
         android:id="@+id/eventListView"
