@@ -49,6 +49,9 @@ public class AccountFragment extends Fragment {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference myReff = db.getReference();
 
+        if (group == null) {
+            return;
+        }
 
         Task<DataSnapshot> data = myReff.child("Groups").child(group).child("Expenses").get();
         while ((!data.isComplete()));
@@ -78,8 +81,10 @@ public class AccountFragment extends Fragment {
                 // snapshot of our database.
 
                 Map<Object, String> map = (Map<Object, String>) snapshot.getValue();
-                String jj = (String) map.get("Group");
-                getCount(jj);
+                if (map != null) {
+                    String jj = (String) map.get("Group");
+                    getCount(jj);
+                }
 
             }
 
