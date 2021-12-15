@@ -86,6 +86,8 @@ public class FinanceFragment extends Fragment {
         userGroupRef.addValueEventListener(userGroupListener);
 
         String groupName = sharedPreferences.getString("userGroupName", "");
+        Log.i("Group", groupName);
+        Log.i("Username", username);
 
         DatabaseReference expensesReference = db.child("Groups").child(groupName).child("Expenses");
         recyclerView = financeFragmentView.findViewById(R.id.recycler_view);

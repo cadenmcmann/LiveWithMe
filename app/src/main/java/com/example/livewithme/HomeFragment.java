@@ -2,6 +2,7 @@ package com.example.livewithme;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 
 public class HomeFragment extends Fragment {
@@ -26,6 +28,11 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        RelativeLayout relativeLayout = view.findViewById(R.id.HomeLayout);
+        AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
 
         Button button = (Button) view.findViewById(R.id.ADD);
         button.setOnClickListener(new View.OnClickListener()
